@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bid5t58hf67ah"]
+[gd_scene load_steps=7 format=3 uid="uid://4n1oafkgykkx"]
 
-[ext_resource type="Texture2D" uid="uid://dlhrhuv77bcfo" path="res://assets/pingpong.png" id="1_hauu5"]
+[ext_resource type="Texture2D" uid="uid://dlhrhuv77bcfo" path="res://assets/pingpong.png" id="1_doq72"]
+[ext_resource type="Script" path="res://game/game.gd" id="2_7568m"]
+[ext_resource type="PackedScene" uid="uid://vaca0nva6nft" path="res://player/player.tscn" id="3_uveio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dug7a"]
 size = Vector2(1152, 20)
@@ -13,10 +15,15 @@ size = Vector2(64, 648)
 
 [node name="Game" type="Sprite2D"]
 texture_filter = 1
-texture = ExtResource("1_hauu5")
+texture = ExtResource("1_doq72")
 centered = false
+script = ExtResource("2_7568m")
+
+[node name="Player" parent="." instance=ExtResource("3_uveio")]
+position = Vector2(24, 324)
 
 [node name="Borders" type="StaticBody2D" parent="."]
+collision_layer = 2
 
 [node name="Top" type="CollisionShape2D" parent="Borders"]
 position = Vector2(576, -8)

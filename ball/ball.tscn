@@ -4,6 +4,7 @@
 size = Vector2(10, 10)
 
 [node name="ball" type="CharacterBody2D"]
+collision_mask = 3
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
