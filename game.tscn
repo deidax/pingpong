@@ -8,28 +8,32 @@ size = Vector2(1152, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhxmh"]
 size = Vector2(1152, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v16l"]
-size = Vector2(24, 646)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s825n"]
+size = Vector2(64, 648)
 
 [node name="Game" type="Sprite2D"]
 texture_filter = 1
 texture = ExtResource("1_hauu5")
 centered = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Borders" type="StaticBody2D" parent="."]
 
-[node name="Top" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Top" type="CollisionShape2D" parent="Borders"]
 position = Vector2(576, -8)
 shape = SubResource("RectangleShape2D_dug7a")
 
-[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Bottom" type="CollisionShape2D" parent="Borders"]
 position = Vector2(576, 656)
 shape = SubResource("RectangleShape2D_bhxmh")
 
-[node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-12, 325)
-shape = SubResource("RectangleShape2D_0v16l")
+[node name="ScoreLeft" type="Area2D" parent="."]
 
-[node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1164, 323)
-shape = SubResource("RectangleShape2D_0v16l")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreLeft"]
+position = Vector2(-32, 324)
+shape = SubResource("RectangleShape2D_s825n")
+
+[node name="ScoreRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreRight"]
+position = Vector2(1184, 324)
+shape = SubResource("RectangleShape2D_s825n")
