@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bid5t58hf67ah"]
+
+[ext_resource type="Texture2D" uid="uid://dlhrhuv77bcfo" path="res://assets/pingpong.png" id="1_hauu5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dug7a"]
+size = Vector2(1152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhxmh"]
+size = Vector2(1152, 8)
+
+[node name="Game" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_hauu5")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 0)
+shape = SubResource("RectangleShape2D_dug7a")
+
+[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 652)
+shape = SubResource("RectangleShape2D_bhxmh")
