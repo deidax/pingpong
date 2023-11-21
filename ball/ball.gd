@@ -15,7 +15,6 @@ func new_ball():
 	position.y = randi_range(200, win_size.y - 200)
 	speed = START_SPEED
 	dir = random_dir()
-	print("------BALL")
 
 func random_dir():
 	var new_dir = Vector2.ZERO
@@ -24,5 +23,14 @@ func random_dir():
 	return new_dir.normalized()
 
 func _physics_process(delta):
-	move_and_collide(dir * speed * delta)
+	var collision = move_and_collide(dir * speed * delta)
+	var collider
+	
+	if collision:
+		collider = collision.get_collider()
+		if collider == $"../Player" or collider == $"../CPU":
+			speed += ACCEL
+			dir = dir.bounce(collision.get_normal())
+		else:
+			dir = dir.bounce(collision.get_normal())
 
