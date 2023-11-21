@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://4n1oafkgykkx"]
+[gd_scene load_steps=9 format=3 uid="uid://4n1oafkgykkx"]
 
 [ext_resource type="Texture2D" uid="uid://dlhrhuv77bcfo" path="res://assets/pingpong.png" id="1_doq72"]
 [ext_resource type="Script" path="res://game/game.gd" id="2_7568m"]
+[ext_resource type="PackedScene" uid="uid://bseoq1v1ouss1" path="res://ball/ball.tscn" id="3_clvv6"]
 [ext_resource type="PackedScene" uid="uid://vaca0nva6nft" path="res://player/player.tscn" id="3_uveio"]
+[ext_resource type="PackedScene" uid="uid://e4x4fwng8nt7" path="res://cpu/cpu.tscn" id="5_3p315"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dug7a"]
 size = Vector2(1152, 20)
@@ -18,6 +20,12 @@ texture_filter = 1
 texture = ExtResource("1_doq72")
 centered = false
 script = ExtResource("2_7568m")
+
+[node name="Ball" parent="." instance=ExtResource("3_clvv6")]
+position = Vector2(500, 300)
+
+[node name="StartTimer" type="Timer" parent="Ball"]
+one_shot = true
 
 [node name="Player" parent="." instance=ExtResource("3_uveio")]
 position = Vector2(24, 324)
@@ -44,3 +52,8 @@ shape = SubResource("RectangleShape2D_s825n")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreRight"]
 position = Vector2(1184, 324)
 shape = SubResource("RectangleShape2D_s825n")
+
+[node name="CPU" parent="." instance=ExtResource("5_3p315")]
+position = Vector2(1112, 312)
+
+[connection signal="timeout" from="Ball/StartTimer" to="." method="_on_start_timer_timeout"]
